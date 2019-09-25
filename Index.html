@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+  </head>
+  <body>
+  	<canvas id="canvas" width="500" height="500">
+  		
+
+  	</canvas>
+
+
+    <script>
+
+    	var points = [
+		  [50, 50],
+		  [50, 100],
+		  [100, 100],
+		  [100, 50],
+		  [50, 50]
+		];
+
+
+		const drawSomeFigure = arr => {
+			let canvas = document.getElementById('canvas');
+ 			let ctx = canvas.getContext('2d');
+ 			ctx.beginPath();
+ 			arr.forEach((item,index) =>{
+ 				let x = item[0];
+ 				let y = item[1];
+ 				if(index === 0) {
+ 					ctx.moveTo(x,y)
+ 				} else {
+ 					ctx.lineTo(x,y)
+ 				}
+ 			})
+ 			ctx.stroke();
+		}
+
+		// drawSomeFigure(points);
+
+
+
+
+
+		const snowMan = function(x, y) {
+			let canvas = document.getElementById('canvas');
+ 			let ctx = canvas.getContext('2d');
+ 			const radius = 40;
+ 			ctx.lineWidth = 5;
+
+ 			function circle(x, y, r ,isFill) {
+ 				ctx.beginPath();
+ 				ctx.arc( x , y , r ,0, 2 * Math.PI);
+ 				if(isFill){
+ 					ctx.fill();
+ 				}		
+ 				ctx.stroke();
+ 			} 
+ 			// Круги основные
+ 			circle(x, y, radius, false);
+ 			circle(x, y + radius * 2.5, radius * 1.5 ,false );
+ 			circle(x, y + radius * 6 , radius * 2 ,false );
+ 			// глаза и нос
+ 			circle(x - 15, y - 10 , radius/8 ,true );
+ 			circle(x + 15, y - 10 , radius/8 ,true );
+ 			circle(x, y + 10 , radius/10 ,true );
+ 			// рот (упоротый немного :) )
+ 			circle(x - 25, y + 20 , radius/30 ,true );
+ 			circle(x - 15, y + 27 , radius/30 ,true );
+ 			circle(x - 5, y + 30 , radius/30 ,true );
+ 			circle(x + 5, y + 30 , radius/30 ,true );
+ 			circle(x + 15, y + 27 , radius/30 ,true );
+ 			circle(x + 25, y + 20 , radius/30,true );
+ 
+
+ 			// пуговицы в центре
+ 			circle(x, y + 70 , radius/10 ,true );
+ 			circle(x, y + 100 , radius/10 ,true );
+ 			circle(x, y + 130 , radius/10 ,true );
+ 			// пуговицы внизу
+ 			circle(x, y + 210 , radius/10 ,true );
+ 			circle(x, y + 240 , radius/10 ,true );
+ 			circle(x, y + 270 , radius/10 ,true );
+ 				 
+		};
+
+		snowMan(100,100);
+
+   
+    </script>
+    
+  </body>
+</html>
